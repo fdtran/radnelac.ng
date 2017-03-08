@@ -27,7 +27,7 @@ auth.controller('AuthController', function($scope, $location, User, $window, Use
   $scope.signup = function() {
     User.signup($scope.user, function(token){
       $window.localStorage.setItem('com.radnelac', token);
-      $location.path('/');
+      $location.path('/signin');
     });
   }
 

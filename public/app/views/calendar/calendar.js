@@ -30,16 +30,16 @@ calendar.controller('CalendarController', function( $scope, $location, Event , $
         });
       } else if (filter === 'past') {
         filtered = userFiltered.filter((item) => {
-          return (new Date (item.time + ' ' + item.date)) < current;
+          return (Date.parse (item.time + ' ' + item.date)) < Date.parse(current);
         });
       } else if (filter === 'future') {
         filtered = userFiltered.filter((item) => {
-          return (new Date (item.time + ' ' + item.date)) > current;
+          return (Date.parse(item.time + ' ' + item.date)) > Date.parse(current);
         });
       } else {
         filtered = userFiltered;
       }
-      $scope.events = filtered.sort((a,b) => new Date(a.time+ ' ' + a.date)  < new Date(b.time + ' ' + b.date));
+      $scope.events = filtered.sort((a,b) => Date.parse(a.time+ ' ' + a.date)  < Date.parse(b.time + ' ' + b.date));
     });
   };
   $scope.hours = _.range(1,13);
@@ -63,7 +63,7 @@ calendar.controller('CalendarController', function( $scope, $location, Event , $
     $scope.init();
   };
   $scope.getClass = function (event) {
-    let diff = new Date(event.time + ' ' + event.date) -  (new Date());
+    let diff = Date.parse(event.time + ' ' + event.date) -  Date.parse(new Date());
     if(diff <= 7200000 && diff > 0) {
       return 'panel-danger';
     } else {

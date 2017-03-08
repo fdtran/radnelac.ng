@@ -1,0 +1,67 @@
+<div ng-controller="CalendarController as cc" ng-init="init()">
+  <div class="row">
+    <div class="col-sm-2 dropdown">
+        <div class="dropdown">
+          <button class="btn-link dropdown-toggle" type="button" data-toggle="dropdown">Options<span class="caret"></span></button>
+           <ul class="dropdown-menu"> 
+            <li><button class="btn-link" ng-click="signOut()">Sign Out!</button><li>
+            </li><button ng-click="toggleForm();toggleAdd()" ng-show="showAdd" class='btn-link'>Add an Event!</button></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn-link dropdown-toggle" type="button" data-toggle="dropdown">Views<span class="caret"></span></button>
+          <ul class = "dropdown-menu">
+            <li><button class="btn-link" ng-click='filterEvents("today")'>Today's Events</button></li>
+            <li><button class="btn-link" ng-click='filterEvents()'>All Events</button></li>
+            <li><button class="btn-link" ng-click="filterEvents('past')">Previous Events</button></li>
+            <li><button class="btn-link" ng-click="filterEvents('future')">Future Events</button></li>
+          </ul>
+        </div>
+    </div>
+    <div ng-show="show" class="container col-sm-8">
+        <div class="form">Task Name<input type="text" ng-model="name" class="form-control"></input></div>
+        <div class="form">Description:<input type="text" ng-model="description" class="form-control"></input></div>
+        <div class="form">Time:
+          <select ng-model="selectedHour">
+            <option ng-repeat="hour in hours" value={{hour}}>{{hour}}</option>
+          </select>
+          <select ng-model="selectedMinute">
+            <option ng-repeat="minute in minutes" value={{minute}}>{{minute}}</option>
+          </select>
+          <select ng-model="selectedAmPm">
+            <option ng-repeat="choice in ampm" value={{choice}}>{{choice}}</option>
+          </select>
+        <div>Date:
+          <select ng-model="selectedMonth" ng-change=days(selectedMonth) class="form">
+            <option selected="selected" disabled="disabled">Month</option>
+            <option ng-repeat="month in months" value='{{month}}'>{{month}}</option> 
+          </select>
+          <select ng-model="selectedDay" class="form">
+            <option selected="selected" disabled="disabled">Day</option>
+            <option ng-repeat="num in daysArray" value='{{num}}' >{{num}}</option>
+          </select>
+          <select ng-model="selectedYear" class="form">
+            <option selected="selected" disabled="disabled">Year</option>
+            <option ng-repeat="year in getYears()" value='{{year}}' >{{year}}</option> {{year}}
+          </select>
+          <div class="alert-danger form" ng-show="missingFields">Error: Some fields are missing. All fields are required to submit.</div>
+        </div>
+        <div>
+          <button class="btn btn-primary btn-sm" ng-click="addEvent(name, description, selectedHour + ':' + selectedMinute + ' ' + selectedAmPm, selectedMonth + ' ' + selectedDay + ', ' + selectedYear)">Submit Event!</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="container events">
+      <div ng-repeat="e in events">
+        <div class="panel" ng-class="getClass(e)">
+            <div class="date panel-heading"><strong>{{e.time}} - {{e.date}}</strong><span class="delete"><button class="btn btn-danger btn-sm" ng-click="deleteEvent(e)">delete</button></span></div>
+            <div class="panel-body">
+              <div class="name"><strong>{{e.name}}:</strong></div>
+              <div class="description"><em>{{e.description}}</em></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

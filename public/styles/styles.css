@@ -1,0 +1,32 @@
+
+.form {
+  padding-bottom: 10px;
+}
+
+.glyphicon {
+  font-size: 40px;
+  float:right;
+  padding-left: 5px;
+
+}
+.name {
+  font-size: 20px;
+}
+.delete {
+  float: right;
+}
+body {
+  background-color: #eee;
+}
+.events {
+  height: 400px;
+  overflow:scroll;
+}
+.dropdown {
+  text-align: center;
+}
+
+.date {
+  font-size: 20px;
+  background-color: #16BFF8;
+}

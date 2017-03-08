@@ -1,0 +1,10 @@
+<div id='signin' ng-controller='AuthController' class="container">
+  <h1>Sign In</h1>
+  <form name="signinForm" ng-submit='signin()'>
+    <input type='text'ng-model='user.username' placeholder="username">
+    <input type="password" ng-model='user.password' placeholder="password">
+    <button ng-click="validate()">Log In</button>
+  </form>
+  <a href="#!/signup">Don't have an account? <strong>Signup</strong> ...</a>
+  <div style="color:red" ng-show="inValid">ERROR: {{passError}}</div>
+</div>

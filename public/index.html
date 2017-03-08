@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="UTF-8">
+    <script src='./lib/jquery/dist/jquery.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" / >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />    
+    <script src='./lib/lodash/lodash.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <script src='./lib/angular/angular.js'></script>
+    <script src='./lib/angular-route/angular-route.js'></script>
+    <title>Radnelac.ng</title>
+  </head>
+  <body>
+    <div class="jumbotron container">
+      <div class="glyphicon glyphicon-user"></div>
+      <div class="name text-right"></div>
+      <h1>Radnelac.ng</h1>
+      <h2 ng-controller='TimeController'>
+        {{ clock  | date:'medium'}}
+      </h2>
+      <p>Welcome!</p>
+      <p>Your personal light-weight calendar to manage the unmanagable.</p>
+    </div>
+    <script src='./app/views/auth/auth.js'></script>
+    <script src='./app/services/services.js'></script>
+    <script src='./app/views/calendar/calendar.js'></script>
+    <script src='./app/views/createEvent/createEvent.js'></script>
+    <script src='./app/app.js'></script>
+    <div ng-view></div>
+  </body>
+</html>

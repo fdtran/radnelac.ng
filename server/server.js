@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const Event = require('./models/event.js');
 const { User, comparePasswords } = require('./models/user.js');
 var jwt = require('jwt-simple');
-var handler = require('./request-handler.js');
 
 var port = process.env.PORT || 8000;
 

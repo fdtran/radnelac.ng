@@ -97,6 +97,7 @@ calendar.controller('CalendarController', function( $scope, $location, Event , $
 
   $scope.signOut = function () {
     $window.localStorage.removeItem('com.radnelac');
+    UserFactory.set({username: ''});
     $location.path('/');
     $scope.init();
   };

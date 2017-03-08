@@ -30,11 +30,11 @@ calendar.controller('CalendarController', function( $scope, $location, Event , $
         });
       } else if (filter === 'past') {
         filtered = userFiltered.filter((item) => {
-          return new Date (item.time + ' ' + item.date) > current;
+          return (new Date (item.time + ' ' + item.date)) < current;
         });
       } else if (filter === 'future') {
         filtered = userFiltered.filter((item) => {
-          return new Date (item.time + ' ' + item.date) > current;
+          return (new Date (item.time + ' ' + item.date)) > current;
         });
       } else {
         filtered = userFiltered;
